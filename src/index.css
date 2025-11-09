@@ -1,3 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* ← ここから下に自分のCSS（ノイズや .glass など）を書いてOK */
+
+/* ほんのりノイズ（透明感アップ） */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1200px 600px at 20% -10%, rgba(51, 146, 137, 0.10), transparent 60%),
+    radial-gradient(1000px 500px at 90% 10%, rgba(66, 166, 190, 0.12), transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/fi lter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-size: cover, cover, 120px 120px;
+  z-index: 0;
+}
+
+/* ガラスカードの補助ユーティリティ */
+.glass {
+  background: var(--glass, rgba(255,255,255,0.55));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-right-color: rgba(255,255,255,0.35);
+  border-bottom-color: rgba(255,255,255,0.35);
+}

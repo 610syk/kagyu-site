@@ -1,4 +1,3 @@
-import React from "react";
 import ArtistSite from "./ArtistSite";
 
 function App() {
